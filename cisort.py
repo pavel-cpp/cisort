@@ -62,6 +62,4 @@ def cisort():
         print(f'[cisort] Sorting {file}')
         insert_includes(sort_all(get_includes(file)), file)
 
-
-if __name__ == '__main__':
-    cisort()
+cisort()

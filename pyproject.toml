@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "cisort"
+version = "1.0.1"
+description = "cpp include sort"
+authors = ["Pavel <toruchan174@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.scripts]
+cisort = 'cisort:cisort'
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
