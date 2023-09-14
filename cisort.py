@@ -61,5 +61,3 @@ def cisort():
     for file in files:
         print(f'[cisort] Sorting {file}')
         insert_includes(sort_all(get_includes(file)), file)
-
-cisort()
