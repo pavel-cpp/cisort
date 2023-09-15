@@ -39,13 +39,18 @@ def insert_includes(includes, path):
         file.writelines(data)
 
 
-def get_files(directory: str = '.', files=None):
+def get_files(directory: str = '.',
+              flags: list | None = None,
+              files: list | None = None) -> list:
+    if flags is None:
+        flags = []
     if files is None:
         files = []
+
     for file in os.listdir(directory):
         path = f"{directory}/{file}"
-        if os.path.isdir(path):
-            get_files(path, files)
+        if os.path.isdir(path) and '-r' in flags:
+            get_files(path, flags, files)
         elif file.split('.')[-1] in ('c', 'cpp', 'h', 'hpp'):
             print(f'[cisort] Add to sorting list {path}')
             files.append(path)
@@ -53,8 +58,12 @@ def get_files(directory: str = '.', files=None):
 
 
 def cisort():
-    if len(sys.argv) > 1:
-        files = get_files(sys.argv[1])
+    args = sys.argv
+    if len(args) > 1:
+        if sys.argv[-1][0] == '-':
+            files = get_files(flags=args[1:])
+        else:
+            files = get_files(args[-1], args[1:-1])
     else:
         files = get_files()
 
