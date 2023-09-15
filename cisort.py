@@ -84,15 +84,15 @@ def cisort():
         )
         return
 
-    if sys.argv[-1][0] != '-':
+    if sys.argv[-1][0] == '-' or not args:
+        print('Start cisearching...')
+        files = get_files(flags=args)
+    elif is_correct_flags(args[:-1]):
         if is_correct_flags(args[:-1]):
             print('Start cisearching...')
             files = get_files(directory=args[-1], flags=args[:-1])
         else:
             return
-    elif is_correct_flags(args):
-        print('Start cisearching...')
-        files = get_files(flags=args)
     else:
         return
 
@@ -103,5 +103,5 @@ def cisort():
         insert_includes(sort_all(get_includes(file)), file)
     print(f'{len(files)} files are cisorted!')
 
-
-cisort()
+if __name__ == '__main__':
+    cisort()
