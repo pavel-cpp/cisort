@@ -52,21 +52,56 @@ def get_files(directory: str = '.',
         if os.path.isdir(path) and '-r' in flags:
             get_files(path, flags, files)
         elif file.split('.')[-1] in ('c', 'cpp', 'h', 'hpp'):
-            print(f'[cisort] Add to sorting list {path}')
+            if '-ls' in flags:
+                print(f'Add to cisorting list {path}')
             files.append(path)
     return files
 
 
-def cisort():
-    args = sys.argv
-    if len(args) > 1:
-        if sys.argv[-1][0] == '-':
-            files = get_files(flags=args[1:])
-        else:
-            files = get_files(args[-1], args[1:-1])
-    else:
-        files = get_files()
+def is_correct_flags(flags: list) -> bool:
+    available_flags = ('-r', '-ls', '-h', '--help')
+    for flag in flags:
+        if flag not in available_flags:
+            print(
+                f'Flag "{flag}" is incorrect!\n'
+                f'Try:\n\tcisort --help'
+            )
+            return False
+    return True
 
+
+def cisort():
+    args = sys.argv[1:]
+
+    if '-h' in args or '--help' in args:
+        print(
+            'Using:\n\n'
+            '\tcisort [flags] [path]\n\n'
+            'Flags:\n'
+            '\t-r - recursive searching C/C++ files\n'
+            '\t-ls - show info about sorted files\n'
+            '\t-h --help - to get help'
+        )
+        return
+
+    if sys.argv[-1][0] != '-':
+        if is_correct_flags(args[:-1]):
+            print('Start cisearching...')
+            files = get_files(directory=args[-1], flags=args[:-1])
+        else:
+            return
+    elif is_correct_flags(args):
+        print('Start cisearching...')
+        files = get_files(flags=args)
+    else:
+        return
+
+    print('Start cisorting...')
     for file in files:
-        print(f'[cisort] Sorting {file}')
+        if '-ls' in args:
+            print(f'Cisorting {file}')
         insert_includes(sort_all(get_includes(file)), file)
+    print(f'{len(files)} files are cisorted!')
+
+
+cisort()

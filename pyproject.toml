@@ -1,9 +1,8 @@
 [tool.poetry]
 name = "cisort"
-version = "1.0.2"
+version = "1.0.3"
 description = "cpp include sort"
 authors = ["Pavel <toruchan174@gmail.com>"]
-README = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
