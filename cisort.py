@@ -88,11 +88,8 @@ def cisort():
         print('Start cisearching...')
         files = get_files(flags=args)
     elif is_correct_flags(args[:-1]):
-        if is_correct_flags(args[:-1]):
-            print('Start cisearching...')
-            files = get_files(directory=args[-1], flags=args[:-1])
-        else:
-            return
+        print('Start cisearching...')
+        files = get_files(directory=args[-1], flags=args[:-1])
     else:
         return
 
