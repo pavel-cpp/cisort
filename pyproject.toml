@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cisort"
-version = "1.0.9"
+version = "1.1.0"
 description = "cpp include sort"
 authors = ["Pavel <toruchan174@gmail.com>"]
 readme = "README.md"
