@@ -5,11 +5,14 @@ import sys
 
 def get_includes(path):
     with open(path) as file:
-        expr = r'^#include\s*([<\"].[^>\"]*[>\"])\n'
+        expr = r'^#include\s*([<\"].[^>\"]*[>\"])'
         index = end = 0
         includes = [[]]
-        for line in file:
+        file_lines = file.readlines()
+        file_lines.append('')
+        for line in file_lines:
             end += 1
+            line = line.rstrip()
             if re.fullmatch(expr, line):
                 includes[index].append(re.fullmatch(expr, line).groups()[0])
             elif len(includes[-1]) != 0:
