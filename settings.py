@@ -1,4 +1,6 @@
-cpp_std_libs = {
+from typing import Final
+
+CPP_STD_LIBS: Final[dict[str, list[str]]] = {
     'io': [
         'fstream',
         'iomanip',
@@ -92,7 +94,7 @@ cpp_std_libs = {
     ]
 }
 
-c_std_libs = [
+C_STD_LIBS: Final[list[str]] = [
     'assert.h',
     'complex.h',
     'ctype.h',
@@ -123,3 +125,10 @@ c_std_libs = [
     'wchar.h',
     'wctype.h',
 ]
+
+FLAGS: Final = (
+    '-h',
+    '--help',
+    '-ls',
+    '-r'
+)
