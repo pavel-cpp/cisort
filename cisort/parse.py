@@ -10,14 +10,15 @@ def extract_includes(path) -> list:
         includes = []
         file_lines = file.readlines()
         file_lines.append('')
-        for _ in file_lines:
+        while i < len(file_lines):
             line = file_lines[i].rstrip()
             if re.fullmatch(EXPRESSION, line):
                 includes.append(
                     re.fullmatch(EXPRESSION, line).groups()[0]
                 )
                 file_lines.pop(i)
-                i -= 1
+                if i > 0:
+                    i -= 1
             else:
                 i += 1
     with open(path, 'w') as file:
@@ -27,6 +28,8 @@ def extract_includes(path) -> list:
 
 
 def fix_lines(data):
+    if len(data) == 0:
+        return
     line = data[0]
     while line == '\n':
         data.pop(0)
@@ -44,6 +47,7 @@ def insert_includes(includes, path):
                 data.insert(j, f'#include {include}\n')
                 j += 1
             if includes[key]:
+                print('srabotalo')
                 data.insert(j, '\n')
                 j += 1
 

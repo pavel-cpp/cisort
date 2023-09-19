@@ -6,16 +6,21 @@ from settings import CPP_STD_LIBS
 
 
 def sort_all(includes):
+    print(includes)
     res_includes = {key: [] for key in CPP_STD_LIBS}
-    res_includes['local'] = []
     for include in includes:
+        is_appended = False
         for lib_type in CPP_STD_LIBS:
             if include[0] == '"':
-                res_includes['local'].append(include)
+                res_includes['Local'].append(include)
+                is_appended = True
                 break
             elif include[1:-1] in CPP_STD_LIBS[lib_type]:
                 res_includes[lib_type].append(include)
+                is_appended = True
                 break
+        if not is_appended:
+            res_includes['External'].append(include)
     for key in res_includes:
         res_includes[key] = list(set(res_includes[key]))
         res_includes[key].sort()

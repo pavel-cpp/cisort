@@ -1,7 +1,7 @@
 from typing import Final
 
 CPP_STD_LIBS: Final[dict[str, list[str]]] = {
-    'io': [
+    'IO': [
         'fstream',
         'iomanip',
         'ios',
@@ -12,7 +12,7 @@ CPP_STD_LIBS: Final[dict[str, list[str]]] = {
         'sstream',
         'streambuf',
     ],
-    'multithreading': [
+    'Multithreading': [
         'atomic',
         'condition_variable',
         'future',
@@ -20,7 +20,7 @@ CPP_STD_LIBS: Final[dict[str, list[str]]] = {
         'shared_mutex',
         'thread',
     ],
-    'other': [
+    'Other': [
         'algorithm',
         'bitset',
         'chrono',
@@ -66,7 +66,7 @@ CPP_STD_LIBS: Final[dict[str, list[str]]] = {
         'priority_queue',
         'queue',
     ],
-    'clib': [
+    'Clib': [
         'cassert',
         'cctype',
         'cerrno',
@@ -91,7 +91,38 @@ CPP_STD_LIBS: Final[dict[str, list[str]]] = {
         'cuchar',
         'cwchar',
         'cwctype',
-    ]
+        'assert.h',
+        'complex.h',
+        'ctype.h',
+        'errno.h',
+        'fenv.h',
+        'float.h',
+        'inttypes.h',
+        'iso646.h',
+        'limits.h',
+        'locale.h',
+        'math.h',
+        'setjmp.h',
+        'signal.h',
+        'stdalign.h',
+        'stdarg.h',
+        'stdatomic.h',
+        'stdbool.h',
+        'stddef.h',
+        'stdint.h',
+        'stdio.h',
+        'stdlib.h',
+        'stdnoreturn.h',
+        'string.h',
+        'tgmath.h',
+        'threads.h',
+        'time.h',
+        'uchar.h',
+        'wchar.h',
+        'wctype.h',
+    ],
+    'External': [],
+    'Local': []
 }
 
 C_STD_LIBS: Final[list[str]] = [
@@ -125,10 +156,6 @@ C_STD_LIBS: Final[list[str]] = [
     'wchar.h',
     'wctype.h',
 ]
-
-EXTERNAL: Final[str] = '// External'
-
-LOCAL: Final[str] = '// Local'
 
 EXPRESSION: Final[str] = r'^#include\s*([<\"].[^>\"]*[>\"])'
 
