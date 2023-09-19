@@ -26,10 +26,18 @@ def extract_includes(path) -> list:
     return includes
 
 
+def fix_lines(data):
+    line = data[0]
+    while line == '\n':
+        data.pop(0)
+        line = data[0]
+
+
 def insert_includes(includes, path):
     print(includes)
     with open(path) as file:
         data = file.readlines()
+        fix_lines(data)
         j = 0
         for i, key in enumerate(includes):
             for include in includes[key]:
