@@ -17,6 +17,7 @@ def sort_all(includes):
                 res_includes[lib_type].append(include)
                 break
     for key in res_includes:
+        res_includes[key] = list(set(res_includes[key]))
         res_includes[key].sort()
     return res_includes
 
