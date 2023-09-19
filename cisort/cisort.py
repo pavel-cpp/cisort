@@ -1,25 +1,24 @@
 import os
 import sys
-#TODO(Pavel): Не забыть поставить точку
-from parse import get_includes
+# TODO(Pavel): Не забыть поставить точку
+from parse import extract_includes, insert_includes
+from settings import CPP_STD_LIBS
 
 
 def sort_all(includes):
+    res_includes = {key: [] for key in CPP_STD_LIBS}
+    res_includes['local'] = []
     for include in includes:
-        coords = include.pop()
-        include.sort()
-        include.append(coords)
-    return includes
-
-
-def insert_includes(includes, path):
-    with open(path) as file:
-        data = file.readlines()
-        for include in includes:
-            for i in range(include[-1][0], include[-1][1]):
-                data[i] = f'#include {include[i - include[-1][0]]}\n'
-    with open(path, 'w') as file:
-        file.writelines(data)
+        for lib_type in CPP_STD_LIBS:
+            if include[0] == '"':
+                res_includes['local'].append(include)
+                break
+            elif include[1:-1] in CPP_STD_LIBS[lib_type]:
+                res_includes[lib_type].append(include)
+                break
+    for key in res_includes:
+        res_includes[key].sort()
+    return res_includes
 
 
 def get_files(directory: str = '.',
@@ -80,9 +79,9 @@ def cisort():
     for file in files:
         if '-ls' in args:
             print(f'Cisorting {file}')
-        insert_includes(sort_all(get_includes(file)), file)
+        insert_includes(sort_all(extract_includes(file)), file)
     print(f'{len(files)} files are cisorted!')
 
 
 if __name__ == '__main__':
-    print(get_includes('/Users/user/PycharmProjects/cisort/main.cpp'))
+    cisort()

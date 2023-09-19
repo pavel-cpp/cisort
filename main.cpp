@@ -1,9 +1,10 @@
-#pragma once
-
-#include <fstream>
 #include <iostream>
+#include <fstream>
 
 #include <string>
+#include <atomic>
+
+#include "README.md"
 
 // Этот файл содержит компрессор RLE, не меняйте его.
 // Можете изучить устройство компрессора, чтобы лучше понять формат сжатого файла.
