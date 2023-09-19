@@ -126,6 +126,12 @@ C_STD_LIBS: Final[list[str]] = [
     'wctype.h',
 ]
 
+EXTERNAL: Final[str] = '// External'
+
+LOCAL: Final[str] = '// Local'
+
+EXPRESSION: Final[str] = r'^#include\s*([<\"].[^>\"]*[>\"])'
+
 FLAGS: Final = (
     '-h',
     '--help',

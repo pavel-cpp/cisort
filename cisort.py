@@ -1,27 +1,5 @@
 import os
-import re
 import sys
-
-
-def get_includes(path):
-    with open(path) as file:
-        expr = r'^#include\s*([<\"].[^>\"]*[>\"])'
-        index = end = 0
-        includes = [[]]
-        file_lines = file.readlines()
-        file_lines.append('')
-        for line in file_lines:
-            end += 1
-            line = line.rstrip()
-            if re.fullmatch(expr, line):
-                includes[index].append(re.fullmatch(expr, line).groups()[0])
-            elif len(includes[-1]) != 0:
-                includes[index].append(
-                    (end - len(includes[index]) - 1, end - 1))
-                index += 1
-                includes.append([])
-
-        return includes[:-1] if not includes[-1] else includes
 
 
 def sort_all(includes):
@@ -102,6 +80,7 @@ def cisort():
             print(f'Cisorting {file}')
         insert_includes(sort_all(get_includes(file)), file)
     print(f'{len(files)} files are cisorted!')
+
 
 if __name__ == '__main__':
     cisort()
