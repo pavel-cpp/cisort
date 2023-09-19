@@ -1,6 +1,8 @@
 import os
 import sys
 
+from .parse import get_includes
+
 
 def sort_all(includes):
     for include in includes:
@@ -21,8 +23,8 @@ def insert_includes(includes, path):
 
 
 def get_files(directory: str = '.',
-              flags: list | None = None,
-              files: list | None = None) -> list:
+              flags: "list | None" = None,
+              files: "list | None" = None) -> list:
     if flags is None:
         flags = []
     if files is None:

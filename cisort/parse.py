@@ -1,6 +1,6 @@
 import re
 
-from settings import EXPRESSION
+from .settings import EXPRESSION
 
 
 def get_includes(path) -> list:

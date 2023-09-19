@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cisort"
-version = "1.1.1"
+version = "1.1.8"
 description = "cpp include sort"
 authors = ["Pavel <toruchan174@gmail.com>"]
 readme = "README.md"
@@ -9,7 +9,7 @@ readme = "README.md"
 python = "^3.6"
 
 [tool.poetry.scripts]
-cisort = 'cisort:cisort'
+cisort = 'cisort.cisort:cisort'
 
 [build-system]
 requires = ["poetry-core"]
