@@ -36,18 +36,19 @@ def fix_lines(data):
         line = data[0]
 
 
-def insert_includes(includes, path):
-    print(includes)
+def insert_includes(includes, path, flags):
     with open(path) as file:
         data = file.readlines()
         fix_lines(data)
         j = 0
         for i, key in enumerate(includes):
+            if includes[key] and ('-c' in flags or '--comments' in flags):
+                data.insert(j, f'// {key}\n')
+                j += 1
             for include in includes[key]:
                 data.insert(j, f'#include {include}\n')
                 j += 1
             if includes[key]:
-                print('srabotalo')
                 data.insert(j, '\n')
                 j += 1
 

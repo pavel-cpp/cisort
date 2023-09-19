@@ -58,9 +58,11 @@ pip install cisort
 ```cisort [flags] [path]```
 
 Flags:\
-        `-r` - recursive searching C/C++ files\
+        `-r` `--recursive` - recursive searching C/C++ files\
         `-ls` - show info about sorted files\
-        `-h` `--help` - to get help
+        `-h` `--help` - to get help\
+        `-c` `--comments` - add comments to sorted blocks\n'
+
 
 
 #### Contacts

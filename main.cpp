@@ -1,20 +1,28 @@
+// IO
+#include <fstream>
+#include <ios>
+#include <iostream>
+
+// Multithreading
+#include <atomic>
+#include <mutex>
+
+// STL
+#include <array>
+#include <vector>
+
+// External
+#include <QList>
+#include <Windows.h>
+#include <boost/asio/framework.hpp>
+
+// Local
+#include "mainwidow_ui.h"
+#include "mocha.h"
+
+
 using namespace std;
 
-#include <ios>
-#include <vector>
-#include <boost/asio/framework.hpp>
-#include <iostream>
 int main(){
     cout << "Hello, World" << endl;
 }
-#include <QList>
-#include "mainwidow_ui.h"
-#include "mocha.h"
-#include <atomic>
-#include <mutex>
-#include <array>
-#include <fstream>
-
-#ifdef WIN_32
-#include <Windows.h>
-#endif

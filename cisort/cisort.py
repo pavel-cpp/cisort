@@ -2,11 +2,10 @@ import os
 import sys
 # TODO(Pavel): Не забыть поставить точку
 from parse import extract_includes, insert_includes
-from settings import CPP_STD_LIBS
+from settings import CPP_STD_LIBS, FLAGS
 
 
 def sort_all(includes):
-    print(includes)
     res_includes = {key: [] for key in CPP_STD_LIBS}
     for include in includes:
         is_appended = False
@@ -37,7 +36,7 @@ def get_files(directory: str = '.',
 
     for file in os.listdir(directory):
         path = f"{directory}/{file}"
-        if os.path.isdir(path) and '-r' in flags:
+        if os.path.isdir(path) and '-r' in flags or '--recursive' in flags:
             get_files(path, flags, files)
         elif file.split('.')[-1] in ('c', 'cpp', 'h', 'hpp'):
             if '-ls' in flags:
@@ -47,9 +46,8 @@ def get_files(directory: str = '.',
 
 
 def is_correct_flags(flags: list) -> bool:
-    available_flags = ('-r', '-ls', '-h', '--help')
     for flag in flags:
-        if flag not in available_flags:
+        if flag not in FLAGS:
             print(
                 f'Flag "{flag}" is incorrect!\n'
                 f'Try:\n\tcisort --help'
@@ -66,9 +64,10 @@ def cisort():
             'Using:\n\n'
             '\tcisort [flags] [path]\n\n'
             'Flags:\n'
-            '\t-r - recursive searching C/C++ files\n'
+            '\t-r --recursive - recursive searching C/C++ files\n'
+            '\t-c --comments - add comments to sorted blocks\n'
             '\t-ls - show info about sorted files\n'
-            '\t-h --help - to get help'
+            '\t-h --help - to get help\n'
         )
         return
 
@@ -85,7 +84,7 @@ def cisort():
     for file in files:
         if '-ls' in args:
             print(f'Cisorting {file}')
-        insert_includes(sort_all(extract_includes(file)), file)
+        insert_includes(sort_all(extract_includes(file)), file, args)
     print(f'{len(files)} files are cisorted!')
 
 

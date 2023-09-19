@@ -163,5 +163,8 @@ FLAGS: Final = (
     '-h',
     '--help',
     '-ls',
-    '-r'
+    '-r',
+    '--recursive',
+    '-c',
+    '--comments'
 )
