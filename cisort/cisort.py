@@ -1,7 +1,7 @@
 import os
 import sys
-
-from .parse import get_includes
+#TODO(Pavel): Не забыть поставить точку
+from parse import get_includes
 
 
 def sort_all(includes):
@@ -85,4 +85,4 @@ def cisort():
 
 
 if __name__ == '__main__':
-    cisort()
+    print(get_includes('/Users/user/PycharmProjects/cisort/main.cpp'))
