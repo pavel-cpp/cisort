@@ -1,6 +1,6 @@
 [
   {
-    'io': [
+    'Streams': [
     'fstream',
     'iomanip',
     'ios',
@@ -13,7 +13,7 @@
     ]
   },
   {
-    'multithreading': [
+    'Threading': [
       'atomic',
       'condition_variable',
       'future',
@@ -23,15 +23,12 @@
     ],
   }
   {
-    'other': [
+    'Utils': [
       'algorithm',
-      'bitset',
       'chrono',
       'codecvt',
-      'complex',
       'exception',
       'functional',
-      'initializer_list',
       'iterator',
       'limits',
       'locale',
@@ -42,15 +39,21 @@
       'ratio',
       'regex',
       'stdexcept',
-      'string',
       'system_error',
-      'tuple',
-      'typeindex',
-      'typeinfo',
       'type_traits',
       'utility',
       'valarray',
     ],
+  }
+  {
+    'Types': [
+      'complex',
+      'bitset',
+      'tuple',
+      'string',
+      'typeindex',
+      'typeinfo',
+    ]
   }
   {
     'STL': [
@@ -65,6 +68,7 @@
       'multiset',
       'unordered_map',
       'unordered_set',
+      'initializer_list',
       'unordered_multimap',
       'unordered_multiset',
       'stack',
@@ -73,7 +77,7 @@
     ],
   }
   {
-    'clib': [
+    'CLibraries': [
       'cassert',
       'cctype',
       'cerrno',

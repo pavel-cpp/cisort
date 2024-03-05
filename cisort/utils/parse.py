@@ -1,6 +1,6 @@
 import re
 
-from .settings import EXPRESSION
+from .config.constatns import INCLUDE_REGEXPR
 
 
 def get_includes(path) -> list:

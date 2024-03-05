@@ -55,13 +55,23 @@ pip install cisort
 ```
 
 ## Usage:
-```cisort [flags] [path]```
+```shell
+cisort [flags] [path]
 
-Flags:\
-        `-r` - recursive searching C/C++ files\
-        `-ls` - show info about sorted files\
-        `-h` `--help` - to get help
+Flags:
+        -r - recursive searching C/C++ files
+        -ls - show info about sorted files
+        -h --help - to get help
+```
 
+
+## Features and ideas
+
+- [x] Include sorting
+- [x] Sorting with comments
+- [x] Grouping includes
+- [ ] Different preprocessing commands support (e.g. `#pragma`)
+- [ ] Supporting user custom includes
 
 ## Authors
 [Anton Zemtsov](https://github.com/antonata-c/)
