@@ -63,10 +63,8 @@ Flags:\
         `-h` `--help` - to get help
 
 
-#### Contacts
+#### Authors
+[Anton Zemtsov](https://github.com/antonata-c/)
+[Pavel Remdenok](https://github.com/pavel-cpp/)
 
-[VK][1], [Telegram][2], [Discord][3]
 
-[1]: https://vk.com/pavel.cmake
-[2]: https://t.me/pavel_cpp
-[3]: https://discordapp.com/users/427479608321900545/
