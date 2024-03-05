@@ -32,13 +32,16 @@ def cisort():
   if args.verbose:
     logging.info(STARTUP_MESSAGE)
 
-  for files in find_files(args.files):
-    for file in files:
-        logging.info(f'Cisorting {file}...')
-    insert_includes(sort_all(get_includes(file)), file)
+  cnt = 0  
+  for file_paths in find_files(args.files):
+    for file_path in file_paths:
+        logging.info(f'Cisorting {file_path}...')
+        cnt += 1
     if not args.recursive:
         break
-  print(f'{len(files)} files are cisorted!')
+        
+  
+  logging.info(f'{cnt} file{"s" if cnt > 1 else ""} are cisorted!')
 
 
 if __name__ == '__main__':
