@@ -63,7 +63,7 @@ Flags:\
         `-h` `--help` - to get help
 
 
-#### Authors
+## Authors
 [Anton Zemtsov](https://github.com/antonata-c/)
 [Pavel Remdenok](https://github.com/pavel-cpp/)
 
