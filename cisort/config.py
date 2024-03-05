@@ -11,7 +11,7 @@ DT_FORMAT = '%d.%m.%Y %H:%M:%S'
 def configure_argument_parser():
         parser = argparse.ArgumentParser(description='Includes sorter C++')
         parser.add_argument(
-            'path',
+            'files',
             help='Directory or filename to sort'
         )
         parser.add_argument(
@@ -31,6 +31,12 @@ def configure_argument_parser():
             '--comments',
             action='store_true',
             help='Add name of include group'
+        )
+        parser.add_argument(
+            '-g',
+            '--group',
+            action='store_true',
+            help='Group includes'
         )
         return parser
 
