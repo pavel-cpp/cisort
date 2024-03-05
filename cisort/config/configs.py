@@ -2,7 +2,6 @@ import argparse
 import logging
 from logging.handlers import RotatingFileHandler
 
-
 LOG_FORMAT = '"[%(levelname)s] %(asctime)s - %(message)s"'
 DT_FORMAT = '%d.%m.%Y %H:%M:%S'
 

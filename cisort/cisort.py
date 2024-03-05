@@ -1,12 +1,10 @@
 import logging
 import os
 import sys
+from cisort.utils.loader import find_files
 
-from config import (
-    configure_argument_parser,
-    configure_logging,
-    STARTUP_MESSAGE,
-)
+from config import (STARTUP_MESSAGE, configure_argument_parser,
+                    configure_logging)
 
 
 def sort_all(includes):
@@ -27,23 +25,6 @@ def insert_includes(includes, path):
     file.writelines(data)
 
 
-def get_files():
-  if flags is None:
-    flags = []
-  if files is None:
-    files = []
-
-  for file in os.listdir(directory):
-    path = f"{directory}/{file}"
-    if os.path.isdir(path) and '-r' in flags:
-      get_files(path, flags, files)
-    elif file.split('.')[-1] in ('c', 'cpp', 'h', 'hpp'):
-      if '-ls' in flags:
-        print(f'Add to cisorting list {path}')
-      files.append(path)
-  return files
-
-
 def cisort():
   configure_logging()
   arg_parser = configure_argument_parser()
@@ -51,15 +32,12 @@ def cisort():
   if args.verbose:
     logging.info(STARTUP_MESSAGE)
 
-  files = get_files(flags=args)
-
-  print('Start cisearching...')
-  files = get_files(directory=args[-1], flags=args[:-1])
-  print('Start cisorting...')
-  for file in files:
-    if '-ls' in args:
-      print(f'Cisorting {file}')
+  for files in find_files(args.files):
+    for file in files:
+        logging.info(f'Cisorting {file}...')
     insert_includes(sort_all(get_includes(file)), file)
+    if not args.recursive:
+        break
   print(f'{len(files)} files are cisorted!')
 
 

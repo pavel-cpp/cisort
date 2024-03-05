@@ -1,4 +1,3 @@
 from .configs import configure_argument_parser, configure_logging
-from .constants import (
-    EXTERNAL, LOCAL, INCLUDE_REGEXP, STARTUP_MESSAGE, FILE_EXTENTIONS
-)
+from .constants import (EXTERNAL, FILE_EXTENTIONS, INCLUDE_REGEXP, LOCAL,
+                        STARTUP_MESSAGE)
