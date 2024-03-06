@@ -1,13 +1,13 @@
 import logging
 import os
 import sys
-from cisort.utils.loader import find_files
+from utils.files import find_files
 
 from config import (STARTUP_MESSAGE, configure_argument_parser,
                     configure_logging)
 
 
-def sort_all(includes):
+def sort_all(includes: dict[str, int]):
     for include in includes:
         coords = include.pop()
         include.sort()
@@ -24,7 +24,6 @@ def insert_includes(includes, path):
   with open(path, 'w') as file:
     file.writelines(data)
 
-
 def cisort():
   configure_logging()
   arg_parser = configure_argument_parser()
@@ -39,8 +38,7 @@ def cisort():
         cnt += 1
     if not args.recursive:
         break
-        
-  
+
   logging.info(f'{cnt} file{"s" if cnt > 1 else ""} are cisorted!')
 
 

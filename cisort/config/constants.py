@@ -8,4 +8,4 @@ LOCAL: Final[str] = '// Local'
 
 STARTUP_MESSAGE: Final[str] = 'Started cisort'
 
-FILE_EXTENTIONS = ('.cpp', '.c', '.hpp', '.h')
+FILE_EXTENTIONS: tuple = ('.cpp', '.c', '.hpp', '.h')

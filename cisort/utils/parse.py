@@ -3,7 +3,7 @@ import re
 from config import INCLUDE_REGEXP
 
 
-def find_includes(file_path):
+def find_includes(file_path: str):
     with open(file_path) as file:
         return {
             include: index
@@ -11,3 +11,4 @@ def find_includes(file_path):
                 re.findall(INCLUDE_REGEXP, file.read())
             )
         }
+
