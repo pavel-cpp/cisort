@@ -8,21 +8,17 @@ from config import (STARTUP_MESSAGE, configure_argument_parser,
 
 
 def sort_all(includes: dict[str, int]):
-    for include in includes:
-        coords = include.pop()
-        include.sort()
-        include.append(coords)
-    return includes
+    return sorted(includes.items(), key=lambda include: include[0])
 
 
-def insert_includes(includes, path):
-  with open(path) as file:
-    data = file.readlines()
-    for include in includes:
-      for i in range(include[-1][0], include[-1][1]):
-        data[i] = f'#include {include[i - include[-1][0]]}\n'
-  with open(path, 'w') as file:
-    file.writelines(data)
+# def insert_includes(includes, path):
+#   with open(path) as file:
+#     data = file.readlines()
+#     for include in includes:
+#       for i in range(include[-1][0], include[-1][1]):
+#         data[i] = f'#include {include[i - include[-1][0]]}\n'
+#   with open(path, 'w') as file:
+#     file.writelines(data)
 
 def cisort():
   configure_logging()
