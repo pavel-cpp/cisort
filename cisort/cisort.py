@@ -1,10 +1,10 @@
 import logging
 import os
 import sys
-from utils.files import find_files
 
-from config import (STARTUP_MESSAGE, configure_argument_parser,
+from config import (PRAGMA, STARTUP_MESSAGE, configure_argument_parser,
                     configure_logging)
+from utils.files import find_files
 
 
 #TODO: переработать
@@ -12,18 +12,15 @@ def insert_includes(includes_with_indices, path):
     includes_with_indices = sorted(includes_with_indices, key=lambda x: x[1])
     with open(path) as file:
         lines = file.readlines()
+    start_index = lines[0] == PRAGMA
+    # Возможно объединить два цикла
     for index, _ in includes_with_indices:
         lines.pop(index)
     # TODO: Добавить группировку (ЭТА ПОТОМ)
-
     for _, include in includes_with_indices:
-        lines.insert(1, include)
+        lines.insert(start_index, include)
     with open(path, 'w') as file:
         file.writelines(lines)
-    
-
-    
-        
 
 
 def cisort():
