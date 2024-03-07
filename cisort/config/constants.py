@@ -2,6 +2,8 @@ from typing import Final
 
 INCLUDE_REGEXP: Final[str] = r'^#include\s*([<\"][^>\"]*[>\"])'
 
+PRAMGA: Final[str] = '#pragma once'
+
 EXTERNAL: Final[str] = '// External'
 
 LOCAL: Final[str] = '// Local'
