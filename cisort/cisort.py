@@ -1,66 +1,46 @@
+import logging
 import os
 import sys
 
-from .parse import get_includes
-from .config import configure_argument_parser, configure_logging
+from config import (PRAGMA, STARTUP_MESSAGE, configure_argument_parser,
+                    configure_logging)
+from utils.files import find_files
 
 
-def sort_all(includes):
-    for include in includes:
-        coords = include.pop()
-        include.sort()
-        include.append(coords)
-    return includes
-
-
-def insert_includes(includes, path):
+#TODO: переработать
+def insert_includes(includes_with_indices, path):
+    includes_with_indices = sorted(includes_with_indices, key=lambda x: x[1])
     with open(path) as file:
-        data = file.readlines()
-        for include in includes:
-            for i in range(include[-1][0], include[-1][1]):
-                data[i] = f'#include {include[i - include[-1][0]]}\n'
+        lines = file.readlines()
+    start_index = lines[0] == PRAGMA
+    # Возможно объединить два цикла
+    for index, _ in includes_with_indices:
+        lines.pop(index)
+    # TODO: Добавить группировку (ЭТА ПОТОМ)
+    for _, include in includes_with_indices:
+        lines.insert(start_index, include)
     with open(path, 'w') as file:
-        file.writelines(data)
-
-
-def get_files(directory: str = '.',
-              flags: "list | None" = None,
-              files: "list | None" = None) -> list:
-    if flags is None:
-        flags = []
-    if files is None:
-        files = []
-
-    for file in os.listdir(directory):
-        path = f"{directory}/{file}"
-        if os.path.isdir(path) and '-r' in flags:
-            get_files(path, flags, files)
-        elif file.split('.')[-1] in ('c', 'cpp', 'h', 'hpp'):
-            if '-ls' in flags:
-                print(f'Add to cisorting list {path}')
-            files.append(path)
-    return files
+        file.writelines(lines)
 
 
 def cisort():
     configure_logging()
     arg_parser = configure_argument_parser()
     args = arg_parser.parse_args()
+    if args.verbose:
+        logging.info(STARTUP_MESSAGE)
+    
+    cnt = 0
 
-    if sys.argv[-1][0] == '-' or not args:
-        print('Start cisearching...')
-        files = get_files(flags=args)
-    elif is_correct_flags(args[:-1]):
-        print('Start cisearching...')
-        files = get_files(directory=args[-1], flags=args[:-1])
-    else:
-        return
-    print('Start cisorting...')
-    for file in files:
-        if '-ls' in args:
-            print(f'Cisorting {file}')
-        insert_includes(sort_all(get_includes(file)), file)
-    print(f'{len(files)} files are cisorted!')
+    for file_paths in find_files(args.files):
+        for file_path in file_paths:
+            logging.info(f'Cisorting {file_path}...')
+
+            cnt += 1
+        if not args.recursive:
+            break
+
+    logging.info(f'{cnt} file{"s" if cnt > 1 else ""} are cisorted!')
 
 
 if __name__ == '__main__':
