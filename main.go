@@ -2,7 +2,7 @@
 //
 // Install it with:
 //
-//	go install github.com/pavel-cpp/cisort/cmd/cisort@latest
+//	go install github.com/pavel-cpp/cisort@latest
 //
 // Run "cisort -h" for usage.
 package main

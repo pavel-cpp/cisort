@@ -19,7 +19,7 @@ strict enough to run in CI.
 ## Installation
 
 ```shell
-go install github.com/pavel-cpp/cisort/cmd/cisort@latest
+go install github.com/pavel-cpp/cisort@latest
 ```
 
 This needs Go 1.27 or newer and puts `cisort` into `$(go env GOPATH)/bin`.
@@ -277,7 +277,7 @@ repos:
 - uses: actions/setup-go@v5
   with:
     go-version: stable
-- run: go install github.com/pavel-cpp/cisort/cmd/cisort@latest
+- run: go install github.com/pavel-cpp/cisort@latest
 - run: cisort -check -diff .
 ```
 
@@ -299,7 +299,7 @@ go test ./internal/sorter -run Golden -update  # rewrite the preset golden files
 ```
 
 ```
-cmd/cisort           entry point (package main)
+main.go              entry point
 internal/cli         flags, file processing, output
 internal/sorter      parsing and sorting of include runs
 internal/config      settings, built-in presets (internal/config/presets/*.json), .cisort.json lookup
