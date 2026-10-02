@@ -1,0 +1,13 @@
+- id: cisort
+  name: cisort
+  description: Sort C/C++ #include directives.
+  entry: cisort
+  language: golang
+  types_or: [c, c++, objective-c]
+
+- id: cisort-check
+  name: cisort (check)
+  description: Fail when C/C++ #include directives are not sorted.
+  entry: cisort -check -diff
+  language: golang
+  types_or: [c, c++, objective-c]

@@ -1,0 +1,13 @@
+{
+  "blocks": "regroup",
+  "groups": [
+    { "name": "Precompiled header", "match": "(?i)^\"(pch|stdafx|precomp|precompiled)\\.(h|hpp)\"$" },
+    { "name": "Main header", "builtin": "main" },
+    { "name": "Project", "match": "^\"" },
+    { "name": "Qt", "match": "^<(Qt[A-Za-z0-9]*(/[^>]+)?|Q[A-Z][A-Za-z0-9]*)>$" },
+    { "name": "C++ standard library", "builtin": "cpp", "priority": 5 },
+    { "name": "C and POSIX", "builtin": "c", "priority": 6 },
+    { "name": "C and POSIX", "builtin": "posix", "priority": 6 },
+    { "name": "Third-party", "match": "^<", "priority": 4 }
+  ]
+}

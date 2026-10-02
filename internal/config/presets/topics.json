@@ -1,0 +1,23 @@
+{
+  "blocks": "regroup",
+  "comments": true,
+  "groups": [
+    { "name": "Precompiled header", "match": "(?i)^\"(pch|stdafx|precomp|precompiled)\\.(h|hpp)\"$" },
+    { "name": "Main header", "builtin": "main" },
+    { "name": "Containers", "headers": ["<array>", "<bitset>", "<deque>", "<flat_map>", "<flat_set>", "<forward_list>", "<hive>", "<inplace_vector>", "<list>", "<map>", "<mdspan>", "<queue>", "<set>", "<span>", "<stack>", "<unordered_map>", "<unordered_set>", "<valarray>", "<vector>"] },
+    { "name": "Strings and text", "headers": ["<charconv>", "<codecvt>", "<format>", "<locale>", "<regex>", "<string>", "<string_view>", "<text_encoding>"] },
+    { "name": "Streams and I/O", "headers": ["<filesystem>", "<fstream>", "<iomanip>", "<ios>", "<iosfwd>", "<iostream>", "<istream>", "<ostream>", "<print>", "<spanstream>", "<sstream>", "<streambuf>", "<strstream>", "<syncstream>"] },
+    { "name": "Concurrency", "headers": ["<atomic>", "<barrier>", "<condition_variable>", "<future>", "<hazard_pointer>", "<latch>", "<mutex>", "<rcu>", "<semaphore>", "<shared_mutex>", "<stop_token>", "<thread>"] },
+    { "name": "Memory", "headers": ["<memory>", "<memory_resource>", "<new>", "<scoped_allocator>"] },
+    { "name": "Utilities", "headers": ["<any>", "<bit>", "<compare>", "<expected>", "<functional>", "<initializer_list>", "<optional>", "<source_location>", "<tuple>", "<utility>", "<variant>", "<version>"] },
+    { "name": "Algorithms and numerics", "headers": ["<algorithm>", "<complex>", "<execution>", "<iterator>", "<linalg>", "<numbers>", "<numeric>", "<random>", "<ranges>", "<ratio>", "<simd>"] },
+    { "name": "Types and metaprogramming", "headers": ["<concepts>", "<coroutine>", "<generator>", "<limits>", "<stdfloat>", "<type_traits>", "<typeindex>", "<typeinfo>"] },
+    { "name": "Time", "headers": ["<chrono>"] },
+    { "name": "Errors and diagnostics", "headers": ["<contracts>", "<debugging>", "<exception>", "<stacktrace>", "<stdexcept>", "<system_error>"] },
+    { "name": "C library", "builtin": "cpp", "priority": 12 },
+    { "name": "C library", "builtin": "c", "priority": 12 },
+    { "name": "POSIX", "builtin": "posix" },
+    { "name": "Third-party", "match": "^<" },
+    { "name": "Project", "match": "^\"" }
+  ]
+}

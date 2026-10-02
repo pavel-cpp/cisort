@@ -1,0 +1,7 @@
+{
+  "blocks": "preserve",
+  "groups": [
+    { "name": "Precompiled header", "match": "(?i)^\"(pch|stdafx|precomp|precompiled)\\.(h|hpp)\"$" },
+    { "name": "Main header", "builtin": "main" }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "blocks": "regroup",
+  "groups": [
+    { "name": "Precompiled header", "match": "(?i)^\"(pch|stdafx|precomp|precompiled)\\.(h|hpp)\"$" },
+    { "name": "Related header", "builtin": "main" },
+    { "name": "C system headers", "match": "^<[^>]*\\.h>$" },
+    { "name": "C++ standard library", "builtin": "cpp" },
+    { "name": "Other libraries", "match": "^<" },
+    { "name": "Project headers", "match": "^\"" }
+  ]
+}
