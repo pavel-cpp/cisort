@@ -1,0 +1,12 @@
+{
+  "blocks": "preserve",
+  "groups": [
+    { "name": "Precompiled header", "match": "(?i)^\"(pch|stdafx|precomp|precompiled)\\.(h|hpp)\"$" },
+    { "name": "Main header", "builtin": "main" },
+    { "name": "C system headers", "builtin": "c" },
+    { "name": "C system headers", "builtin": "posix", "priority": 2 },
+    { "name": "C++ standard library", "builtin": "cpp" },
+    { "name": "Third-party", "match": "^<" },
+    { "name": "Project", "match": "^\"" }
+  ]
+}

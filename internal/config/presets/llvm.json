@@ -1,0 +1,10 @@
+{
+  "blocks": "merge",
+  "groups": [
+    { "name": "Precompiled header", "match": "(?i)^\"(pch|stdafx|precomp|precompiled)\\.(h|hpp)\"$", "priority": -1 },
+    { "name": "Main module header", "builtin": "main", "priority": 0 },
+    { "name": "LLVM project headers", "match": "^\"(llvm|llvm-c|clang|clang-c|lld|lldb|mlir|polly|flang)/", "priority": 2 },
+    { "name": "System headers", "match": "^(<|\"(gtest|gmock|isl|json)/)", "priority": 3 },
+    { "name": "Local headers", "match": "^\"", "priority": 1 }
+  ]
+}
